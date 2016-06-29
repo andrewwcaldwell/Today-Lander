@@ -1,0 +1,54 @@
+<!--- NOTES FOR EDITING:
+--------------------------------------------------
+
+1) Please DON"T restructure HTML w/o some sort of conversation - particularly towards semantics
+**** ADDITIONS SEEM UNNECESSARY at this point.
+
+2) IDs / Classes can be changed as needed
+
+3) Personal preferance to assign classes for CSS work only.
+
+4) Hold IDs for things requiring Jscript actions only
+when possible.
+
+
+PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
+------------------------------------------------->
+
+
+<!-- DOES INPUT NEED LABEL OR PLACEHOLDER??  -->
+<input id="search" type="text" ng-model="pancake">
+
+
+
+
+<ul>
+    <h2> News Feed </h2>
+    <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
+    <li class="article" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
+
+        <img id="articlelogo" ng-src="{{ article.logo }}">
+
+        <a href="{{ article.link }}"> <img id="globe" ng-src="../resource/globe.png"/> </a>
+
+        <img id="book" src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
+
+        <section id="stories">
+
+            <p id="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
+            
+            <!-- Applied Custom Filter from filters.js -->
+            <p id="published">Published {{ article.published | fromNow }} ... </p>
+            
+            <!-- ul for Interests that Match and have been applied as a new property of the Article -->
+
+            <ul class="viewInts">
+                <li class ="int" ng-repeat="int in article.interests track by $index">
+                    <p> #{{ int }} </p>
+                </li>
+            </ul>
+
+        </section>
+
+    </li>
+</ul>
