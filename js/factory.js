@@ -3,6 +3,7 @@ module.exports = (function() {
     var newsFactory = angular.module('NewsAppFactory', []);
     
     newsFactory.factory('NewsService', function ($http, $q) {
+        // LOCAL VARS
         var news = [];       // all articles
         var current = {};    // current article
         var bookmarks = [];  // bookmarked articles
@@ -10,8 +11,26 @@ module.exports = (function() {
         var publishers = []; // all publishers
         
         
+        var weather = [];
+        // TO-DO Wire Up Location services and Find() with cities.json for adjustable xURL
+        var xURL = '4460243'; // Id for Charlotte, NC
+        var KEY = 'e25e68ed83e545588247aaced65f888d'; // THIS Project Key
+        // Full string http://api.openweathermap.org/data/2.5/forecast/daily?id=4460243&units=imperial&appid=e25e68ed83e545588247aaced65f888d
+        
+        // BREAK TO MODULE --- Import Weather API Module into Factory w/ Getter&Setter
+        //require('./mod-weather');
+        
+        $http({
+            method: 'GET', 
+            url: 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + xURL + '&units=imperial&appid=' + KEY
+        }).then(function (response) {
+            angular.copy(response.data.list, weather);
+            //console.log(weather);
+        });
+        
+        
         /// THE KAMEHAMEHA PROMISE FOR API AJAX
-        /// CALLS FEED AND PUBLISHER AND BLENDS INTO ONE 
+        /// CALLS FEED AND PUBLISHER; BLEND TO ONE RESOURCE ARRAY 
         var feed = $http({
             url: 'http://chat.queencityiron.com/api/news/latest',
             method: 'get'
@@ -80,7 +99,7 @@ module.exports = (function() {
             
             /// Function to Deliver News Array to Feed/Input
             /// Function Analyzes Artilce Titles and User Interest
-            /// Interest Matches Get Added to new Article Property
+            /// Interest Matches Are Added to new Article Property
             getArticles: function () {
                 for (let i = 0; i < news.length; i++) {
                     news[i].interests = [];
@@ -154,6 +173,17 @@ module.exports = (function() {
                 //console.log('Removed From Interests clicked');
                 console.log(interests);
                 return interests;
+            },
+            
+            /// Function to Deliver Weather Array to Weather Controller
+            getWeather: function () {
+                //console.log(weather);
+                return weather;
+            },
+            
+            /// Function to Set Weather City
+            setLocation: function(input) {
+                xURL = input;
             },
             
             /// Function for Calling in Controller to verify Link-up

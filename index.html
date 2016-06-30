@@ -24,17 +24,16 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
-    <link href="./css/style.css" rel="stylesheet" type="text/css">
+    <!--link href="./css/style.css" rel="stylesheet" type="text/css"-->
     <script src="js/app.js"></script>
 </head>
 
 <header class="columns">
 
-    <img id="anchor" src="anchor.png"/>
+    <!--img id="anchor" src="anchor.png"/-->
 
     <h1> Anchorman </h1>
-    <!--h2> "News Feed; ASSEMBLE!" </h2-->
-
+    <!-- Convert to NAV - SEMANTIC USE - Fix on CSS REDUX -->
     <ul id="navbar" class="columns">
         <li><a href="#/userId/news"> Home </a></li>
         <li><a href="#/userId/interests"> Interests </a></li>
@@ -44,7 +43,7 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 </header>
 
 <body>
-
+    <!-- Why Double Contained? - USE MAIN - Fix on CSS REDUX -->
     <main id="content" class="view-container">
         <div ng-view class="view-frame"></div>
     </main>

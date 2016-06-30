@@ -3,31 +3,30 @@ module.exports = (function() {
     
     ////// Controller for FEED / STREAM //////
     controllers.controller('LiveStreamController', ['$scope', 'NewsService', function ($scope, NewsService) {
+        /* Service Test
+        console.log('Live Stream View Working'); //Router
+        console.log(NewsService.silento()); //Factory
+        */
         
-        // Code to test View / Router
-        //console.log('Live Stream View Working');
-        
-        // Code to Test Factory Link
-        //console.log(NewsService.silento());
-
-        // Code to Get Initial Feed Articles
+        // Get Initial Feed Articles
         $scope.news = NewsService.getArticles();
         
         
-        // Code to Bookmark an Article
-        $scope.clickSendID = function(ID) {NewsService.setBookmark(ID);};     
+        // Bookmark an Article
+        $scope.clickSendID = function(ID) {NewsService.setBookmark(ID);};
+        
+        $scope.weather = NewsService.getWeather();
+        console.log(NewsService.getWeather());
     }]);
 
     ////// Controller for INTERESTS //////
     controllers.controller('InterestSettingController', ['$scope', 'NewsService', function ($scope, NewsService) {
+        /* Service Test
+        console.log('Live Stream View Working'); //Router
+        console.log(NewsService.silento()); //Factory
+        */
         
-        // Code to test View / Router
-        //console.log('Interests Settings View Working');
-        
-        // Code to Test Factory Link
-        //console.log(NewsService.silento());
-        
-        // Code to Add an Interest & Clear Input Field / Value
+        // Add an Interest & Clear Input Field / Value
         $scope.clickSendInput = function(input) {
             //console.log(input);
             NewsService.addInterest(input);
@@ -36,27 +35,25 @@ module.exports = (function() {
             $scope.newInterest = null;
         };
         
-        // Code to Get User Interests
+        // Get User Interests
         $scope.interests = NewsService.getInterests();
         
-        // Code to Remove an Interest
+        // Remove an Interest
         $scope.clickSendID = function(input) {NewsService.removeInterests(input);};
         
     }]);
     
     ////// Controller for BOOKMARKS //////
     controllers.controller('BookmarkController', ['$scope', 'NewsService', function ($scope, NewsService) {
+        /* Service Test
+        console.log('Live Stream View Working'); //Router
+        console.log(NewsService.silento()); //Factory
+        */
         
-        // Code to test View / Router
-        //console.log('Bookmarks View Working');
-        
-        // Code to Test Factory Link
-        //console.log(NewsService.silento());
-        
-        // Code to Get Bookmarked Articles
+        // Get Bookmarked Articles
         $scope.news = NewsService.getBookmarks();
         
-        // Code to Un-Bookmark an Articles
+        // Un-Bookmark an Articles
         $scope.clickSendID = function(ID) {NewsService.removeBookmark(ID);};
     }]);
     
