@@ -19,10 +19,22 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 <!-- DOES INPUT NEED LABEL OR PLACEHOLDER??  -->
 <input id="search" type="text" ng-model="pancake">
 
+<div class="weatherPane">
+    <ul>
+    <h2> 5 Day Forecast </h2>
+        <li class="dailyF" ng-repeat="daily in weather">
+            <img ng-src="{{ weather.link }}">
+            <p class="hi"> HIGH is: {{ daily.temp.max }}</p>
+            <p class="lo"> LOW is: {{ daily.temp.min}}</p>
+            <p class="percip"> RAIN is: {{ daily.humidity }}</p>
+        </li>
+    </ul>
+</div>
 
 
 
-<ul>
+<div class="newsPane">
+    <ul>
     <h2> News Feed </h2>
     <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
     <li class="article" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
@@ -47,8 +59,8 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
                     <p> #{{ int }} </p>
                 </li>
             </ul>
-
         </section>
-
     </li>
 </ul>
+</div>    
+
