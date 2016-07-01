@@ -17,12 +17,12 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 
 
 <!-- DOES INPUT NEED LABEL OR PLACEHOLDER??  -->
-<input id="search" type="text" ng-model="pancake">
+<!--input id="search" type="text" ng-model="pancake"-->
 
-<div class="weatherPane">
-    <ul>
+<div class="column">
     <h2> 5 Day Forecast </h2>
-        <li class="dailyF" ng-repeat="daily in weather">
+    <ul class="forecast">
+        <li class="daily" ng-repeat="daily in weather">
             <img ng-src="{{ weather.link }}">
             <p class="hi"> HIGH is: {{ daily.temp.max }}</p>
             <p class="lo"> LOW is: {{ daily.temp.min}}</p>
@@ -32,35 +32,44 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 </div>
 
 
+<div class="row">
+    <div class="pNews fifty">
+        <h2> Recent News </h2>
+        <ul>
+        <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
+            <li class="article" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
 
-<div class="newsPane">
-    <ul>
-    <h2> News Feed </h2>
-    <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
-    <li class="article" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
+                <img class="pubLogo" ng-src="{{ article.logo }}">
 
-        <img id="articlelogo" ng-src="{{ article.logo }}">
+                <a href="{{ article.link }}"> <img id="globe" ng-src="../resource/globe.png"/> </a>
 
-        <a href="{{ article.link }}"> <img id="globe" ng-src="../resource/globe.png"/> </a>
+                <img id="book" src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
 
-        <img id="book" src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
+                <section id="stories">
 
-        <section id="stories">
-
-            <p id="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
+                    <p id="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
             
-            <!-- Applied Custom Filter from filters.js -->
-            <p id="published">Published {{ article.published | fromNow }} ... </p>
+                    <!-- Applied Custom Filter from filters.js -->
+                    <p id="published">Published {{ article.published | fromNow }} ... </p>
             
-            <!-- ul for Interests that Match and have been applied as a new property of the Article -->
+                    <!-- ul for Interests that Match and have been applied as a new property of the Article -->
 
-            <ul class="viewInts">
-                <li class ="int" ng-repeat="int in article.interests track by $index">
-                    <p> #{{ int }} </p>
-                </li>
-            </ul>
-        </section>
-    </li>
-</ul>
-</div>    
+                    <ul class="viewInts">
+                        <li class ="int" ng-repeat="int in article.interests track by $index">
+                            <p> #{{ int }} </p>
+                        </li>
+                    </ul>
+                </section>
+            </li>   
+        </ul>
+    </div> 
+    <div class="pTodo fifty">
+        <h2> Notes and Reminders </h2>
+        <ul>
+            <li>add input field</li>
+            <li>add checkboxes</li>
+            <li>write more todos</li>
+        </ul>
+    </div>
+</div>
 
