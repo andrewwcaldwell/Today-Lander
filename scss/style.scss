@@ -1,4 +1,14 @@
+@import url(https://fonts.googleapis.com/css?family=Raleway:600);
+
+/************** SASS VARS ****************/
+
+//FONT SETS
+$tempFont:  'Raleway', sans-serif;
+
+// COLOR PALLET
 $blue1: #ADF0F2;
+
+/*****************************************/
 
 body {
     margin: 0px;
@@ -10,6 +20,7 @@ ul {
 }
 
 li {
+    font-family: $tempFont;
     list-style: none;
     
     border: 1px solid green;
@@ -21,6 +32,18 @@ a {
 
 div {
     border: 1px solid red;
+}
+
+h1 {
+    font-size: 50px;
+}
+
+h2 {
+    font-size: 40px;
+}
+
+h3 {
+    font-size: 35px;
 }
 
 header {
@@ -59,9 +82,15 @@ header > h1 {
 }
 
 .daily {
-    background-color: blue;
+    //background-color: blue;
+    flex-grow: 1;
+    padding: 1%;
+    //margin: 3%;
 }
-
+.daily:hover {
+    flex-grow: 2;
+    background-color: cyan;
+}
 
 .pubLogo {
     width: 300px;

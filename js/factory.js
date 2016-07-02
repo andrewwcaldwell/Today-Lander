@@ -28,7 +28,6 @@ module.exports = (function() {
             //console.log(weather);
         });
         
-        
         /// THE KAMEHAMEHA PROMISE FOR API AJAX
         /// CALLS FEED AND PUBLISHER; BLEND TO ONE RESOURCE ARRAY 
         var feed = $http({
@@ -115,6 +114,7 @@ module.exports = (function() {
                     }
                     
                 }
+                console.log(news);
                 return news;
             },
             
@@ -131,7 +131,7 @@ module.exports = (function() {
                         bookmarks.push(news[i]);
                     }
                 }
-                console.log('Add Bookmark Clicked')
+                console.log('Add Bookmark Clicked');
                 console.log(bookmarks);
                 return bookmarks;
             },
