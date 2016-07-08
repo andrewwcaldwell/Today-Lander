@@ -3,35 +3,30 @@
 /************** SASS VARS ****************/
 
 //FONT SETS
-$tempFont:  'Raleway', sans-serif;
+$tempFont:'Raleway', sans-serif;
 
 // COLOR PALLET
-$blue1: #ADF0F2;
+$blue1: #2dfbf6;
 
 /*****************************************/
 
-body {
-    margin: 0px;
-    padding: 0px;
+/************** NORMALIZE ****************/
+* {
+    margin: 0;
+    padding: 0;
 }
 ul {
-    margin: 0px;
-    padding: 0px;
+    height: 90%;
+    overflow: scroll;
 }
 
 li {
     font-family: $tempFont;
     list-style: none;
-    
-    border: 1px solid green;
 }
 
 a {
     text-decoration: none;
-}
-
-div {
-    border: 1px solid red;
 }
 
 h1 {
@@ -61,35 +56,71 @@ header > h1 {
     font-size: 70px;
 }
 
-.column {
+
+/****** Flex Parent / Child RULES ******/
+
+.flexColumn {
     display: flex;
-    flex-direction: column;  
+    flex-direction: column;
 }
 
-.row {
+.flexRow {
     display: flex;
     flex-direction: row;
 }
 
-.fifty {
-    display: inherit;
-    width: 50%;
+/****** CONTENT SECTIONS ******/
+
+.viewWrapper {
+    display: flex;
+    height: 760px;
+    width: 100%;
+    //background-image: url(../resource/char-morning.jpg);
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+span {
+    border: 2px solid lightgreen;
+    flex-grow: 4;
+}
+.content {
+    display: none;
+    //width: 1200px;
+    height: 100%;
+}
+.show {
+    display: block;
+    flex-grow: 7;
 }
 
-.forecast {
-    display: inherit;
+section > div {
+    height: 7%;
+    background-color: lightgray;
+    border-bottom: 5px solid darkgray;
+    align-content: center;
+}
+.subHead {
+    display: flex;
     flex-direction: row;
+    justify-content: space-between;
+    padding: 10px;
 }
 
-.daily {
-    //background-color: blue;
-    flex-grow: 1;
-    padding: 1%;
-    //margin: 3%;
+.icon {
+    width: 50px;
+    height: 50px;
 }
-.daily:hover {
-    flex-grow: 2;
-    background-color: cyan;
+
+.tab {
+    background-color: orangered;
+    border-right: 5px solid lightgray;
+    width: 60px;
+    padding: 5px;
+    
+}
+.tab:hover {
+    background-color: aqua;
 }
 
 .pubLogo {

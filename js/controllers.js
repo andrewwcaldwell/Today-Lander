@@ -15,8 +15,22 @@ module.exports = (function() {
         // Bookmark an Article
         $scope.clickSendID = function(ID) {NewsService.setBookmark(ID);};
         
+        // Get Weather Forecasts
         $scope.weather = NewsService.getWeather();
         console.log(NewsService.getWeather());
+        
+        
+        // Manage Show-Hide Content  Tabs
+        $scope.dataGroups = ["forecast", "news", "todo"];
+        
+        $scope.classAttach = function(input) {
+            console.log(input);
+            var element = document.getElementById(input);
+            element.classList.add("show");};
+        
+        $scope.classRemove = function(input) {
+            var element = document.getElementById(input);
+            element.classList.remove("show");};
     }]);
 
     ////// Controller for INTERESTS //////
