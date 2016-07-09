@@ -18,42 +18,39 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 
 <!-- DOES INPUT NEED LABEL OR PLACEHOLDER??  -->
 <!--input id="search" type="text" ng-model="pancake"-->
-<span class="flexRow">
-    <nav class="tab" ng-click="classAttach(dataGroups[0])">
-        <img class="icon" src="../resource/weather.png" />
-    </nav>
-    
+<nav class="tab flexRow">
+    <img class="icon" src="../resource/weather.png" ng-click="classAttach(dataGroups[0])"/>
+
+    <img class="icon" src="../resource/news.png" ng-click="classAttach(dataGroups[1])"/>
+
+    <img class="icon" src="../resource/todo.png" ng-click="classAttach(dataGroups[2])"/>
+</nav>
+<div class="contentWrapper">
     <section class="content" id="forecast">
         <div class="subHead" ng-click="classRemove(dataGroups[0])">
+            <img class="icon" src="../resource/arrow-up.png"/>
             <h2> 5 Day Forecast </h2>
-            <img class="icon" src="../resource/arrow.png"/>
         </div>
         <ul class="forecast">
-            <li class="daily" ng-repeat="daily in weather">
+            <li class="item" ng-repeat="daily in weather">
                 <img ng-src="{{ weather.link }}">
                 <p class="hi"> HIGH: <h3>{{ daily.temp.max }}</h3></p>
                 <p class="lo"> LOW: <h3>{{ daily.temp.min}}</h3></p>
             </li>
         </ul>
     </section>
-</span>
 
-<span class="flexRow">
-    <nav class="tab" ng-click="classAttach(dataGroups[1])">
-        <img class="icon" src="../resource/news.png"/>
-    </nav>
-    
     <section class="content" id="news">
         <div class="subHead" ng-click="classRemove(dataGroups[1])">
+            <img class="icon" src="../resource/arrow-up.png"/>
             <h2> Recent News </h2>
-            <img class="icon" src="../resource/arrow.png"/>
         </div>
         <ul>
             <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
-            <li class="article" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
+            <li class="item" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
 
                 <img class="pubLogo" ng-src="{{ article.logo }}">
-                
+
                 <a class="noTarg" href="{{ article.link }}"><img class="icon" ng-src="../resource/globe.png"/> </a>
 
                 <img class="icon" src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
@@ -76,17 +73,11 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
             </li>
         </ul>
     </section>
-</span>
 
-<span class="flexRow">
-    <nav class="tab" ng-click="classAttach(dataGroups[2])">
-        <img class="icon" src="../resource/todo.png"/>
-    </nav>
-    
     <section class="content" id="todo">
         <div class="subHead" ng-click="classRemove(dataGroups[2])">
+            <img class="icon" src="../resource/arrow-up.png"/>
             <h2>Notes and Reminders</h2>
-            <img class="icon" src="../resource/arrow.png"/>
         </div> 
         <ul>
             <li>add input field</li>
@@ -94,5 +85,5 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
             <li>write more todos</li>
         </ul>
     </section>
-</span>
+</div>
 
