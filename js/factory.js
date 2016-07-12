@@ -1,8 +1,8 @@
 //// Set Module in IFFE so it immediately "unpacks" once required in app.js
 module.exports = (function() {
-    var newsFactory = angular.module('NewsAppFactory', []);
+    var appFactory = angular.module('AppFactory', []);
     
-    newsFactory.factory('NewsService', function ($http, $q) {
+    appFactory.factory('AppService', function ($http, $q) {
         // LOCAL VARS
         var news = [];       // all articles
         var current = {};    // current article

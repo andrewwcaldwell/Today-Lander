@@ -8,12 +8,18 @@ require('./controllers');
 require('./factory');
 require('./filters');
 
-var app = angular.module('AnchormanApp', [
+var app = angular.module('TodayApp', [
     'ngRoute', 
-    'NewsAppControllers',
-    'NewsAppFactory',
-    'NewsAppFilters',
+    'AppControllers',
+    'AppFactory',
+    'AppFilters',
     ]);
+
+/* 
+ * TEMPLATES MUST BE CONVERTED 
+ * FILE NAMES MUST BE CHANGED
+ * ADJUSTMENTS BELOW
+ */
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.

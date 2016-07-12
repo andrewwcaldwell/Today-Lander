@@ -1,7 +1,7 @@
 module.exports = (function() {
     /// Require Moment.js 
     var moment = require('moment'); 
-    var filters = angular.module('NewsAppFilters', []).filter('fromNow', function(){
+    var filters = angular.module('AppFilters', []).filter('fromNow', function(){
         
         /// Return a function to Change Article Published Time Stamp to Time Amount From Now.
         return function (input) {
