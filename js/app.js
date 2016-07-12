@@ -23,22 +23,34 @@ var app = angular.module('TodayApp', [
 
 app.config(['$routeProvider', function($routeProvider) {
     $routeProvider.
+        when('/userId/home', {
+            controller: 'HomeController',
+            templateUrl: 'templates/HomeView.html'
+        }).
+        when('/userId/weather', {
+            controller: 'WeatherController',
+            templateUrl: 'templates/WeatherView.html'
+        }).
         when('/userId/news', {
-            controller: 'LiveStreamController',
-            templateUrl: 'templates/LiveStreamView.html',
+            controller: 'NewsController',
+            templateUrl: 'templates/NewsView.html',
         }).
         when('/userId/interests', {
-            controller: 'InterestSettingController',
+            controller: 'InterestController',
             templateUrl: 'templates/IntrestSettingView.html',
         }).
         when('/userId/bookmarks', {
             controller: 'BookmarkController',
             templateUrl: 'templates/BookmarkView.html'
         }).
+        when('/userId/todo', {
+            controller: 'TodoController',
+            templateUrl: 'templates/TodoView.html'
+        }).
         otherwise({
-            redirectTo: '/userId/news'
+            redirectTo: '/userId/home'
         });
-    //console.log('Router Hot');
+    console.log('Router Hot');
 }]);
 
 ////// ALL CONTROLLERS IN CONTROLLERS.JS //////

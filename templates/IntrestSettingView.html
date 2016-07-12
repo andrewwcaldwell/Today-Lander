@@ -1,31 +1,24 @@
-<!--- NOTES FOR EDITING:
---------------------------------------------------
+<div class="contentWrapper">
+    <h1>INTERESTS HERE!!</h1>
+    <section class="content" id="forecast">
+        <div class="subHead" ng-click="classRemove(dataGroups[0])">
+            <img class="icon" src="../resource/arrow-up.png"/>
+            <h2> 5 Day Forecast </h2>
+        </div>
+        
+        <span class="interestPanel">
+            <input id="interestInput" type="text" ng-model="newInterest"/>
+            <img id="plus" src="../resource/add.png" ng-click="clickSendInput( newInterest )"/>
+        </span>
 
-1) Please DON"T restructure HTML w/o some sort of conversation - particularly towards semantics
-**** ADDITIONS GOOD
+        <p> #{{ newInterest }} </p>
 
-2) IDs / Classes can be changed as needed
-
-3) Personal preferance to assign classes for CSS work only.
-
-4) Hold IDs for things requiring Jscript actions only
-when possible.
-
-
-PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
-------------------------------------------------->
-<h3> INTERESTS COMING </h3>
-<span class="interestPanel">
-    <input id="interestInput" type="text" ng-model="newInterest"/>
-    <img id="plus" src="../resource/add.png" ng-click="clickSendInput( newInterest )"/>
-</span>
-
-<p> #{{ newInterest }} </p>
-
-<ul>
-    <!--- Applied Filters Interest Sorting Alphabetically -->
-    <li ng-repeat="interest in interests | orderBy: -interest">
-        <p> {{ interest }} </p>
-        <img id="delete" src="../resource/delete.png" ng-click="clickSendID( interest )">
-    </li>
-</ul>
+        <ul>
+            <!--- Applied Filters Interest Sorting Alphabetically -->
+            <li ng-repeat="interest in interests | orderBy: -interest">
+                <p> {{ interest }} </p>
+                <img id="delete" src="../resource/delete.png" ng-click="clickSendID( interest )">
+            </li>
+        </ul>
+    </section>
+</div>

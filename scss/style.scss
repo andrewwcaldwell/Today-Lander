@@ -1,13 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:600);
+@import url('https://fonts.googleapis.com/css?family=Galada');
 
 /************** SASS VARS ****************/
 
 //FONT SETS
 $tempFont:'Raleway', sans-serif;
+$quoteScript:'Galada', cursive;
 
 // COLOR PALLET
 $blue1: #2DFBF6;
 $blue2: #04D7D2;
+$blue3: #167D7B;
 
 /************** NORMALIZE ****************/
 
@@ -17,11 +20,8 @@ $blue2: #04D7D2;
 }
 
 ul {
-//    height: 80vh;
-    overflow: scroll;
-    padding: 0% 5% 0% 5%;
-    
-    border: 5px solid darkred;
+//    overflow: scroll;
+//    padding: 0% 5% 0% 5%;
 }
 
 li {
@@ -43,6 +43,9 @@ h2 {
 
 h3 {
     font-size: 35px;
+}
+p {
+    font-size: 50px;
 }
 
 /************** FLEXBOX P&C RULES **************/
@@ -74,82 +77,80 @@ body {
 .fullWrapper {
     height: 100%;
     width: 100%;
-    background-color: rgba(255,255,255,.5); // ADD OPACITY from Pos. 4
+    background-color: rgba(255,255,255,.5);
 
 //    border-bottom: 5px solid cyan;
 }
 
 /************** HEADER RULES ****************/
 
-header {
-    align-items: flex-end;
-    padding-top: 15px;
-    padding-left: 30px;
-    height: 10%;
-//    background-color: $blue1;
+.tab {
+    background-color: $blue3;
+    width: 100%;
+    padding-left: 2%;
 }
 
-header > img {
-    height: 95%;
+.tab:hover {
+    background-color: $blue2;
+}
+
+.icon {
+    width: 70px;
+    height: 70px;
+    margin: 10px 15px 10px 15px;
     
-//    border: 1px solid black;
+//    border: 1px solid blue;
 }
 
 /************ CONTENT VIEW ************/
 
 .viewWrapper {
-    display: flex;
     width: 100%;
     height: 90%;
-    
-    border: 1px solid yellow;
 }
-
-.contentWrapper {
-    border: 1px solid white;
-}
-
-.tab {
-    background-color: $blue2;
-    width: 100%;
-}
-
-.tab:hover {
-    background-color: $blue1;
-}
-
-.icon {
-    width: 60px;
-    height: 60px;
-    margin: 5px 15px 5px 15px;
-//    border: 1px solid blue;
-}
-
-.subHead {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: purple;
-    border-bottom: 5px solid darkgray;
-}
-
-/************ SHOW / HIDE RULES ************/
 
 .content {
-    display: none;
+    border: 1px solid red;
+}
+.centerBlock {
+    margin: 5% 10%;
+    //border: 1px solid red;
 }
 
-.show {
-    display: block;
+.title {
+    font-family: $tempFont;
+    text-align: center;
+    color: white;
+    margin: 3%;
 }
-
-/************ NG-REPEAT SECTIONS ************/
 
 .item {
     background-color: lightskyblue;
     border: 4px solid darkgray;
     margin: 20px;
 }
+
+/************ HOME VIEW ************/
+
+.quoteWrapper {
+    background-color: rgba(255,255,255,.5);
+    border: 15px solid $blue3;
+    font-family: $quoteScript;
+    text-align: center;
+    color: $blue3;
+    padding: 5%;
+    //margin: 2%;
+}
+.quoteWrapper:hover {
+    border: 15px solid $blue2;
+}
+.quote {
+    margin: 2%;
+}
+
+/************ WEATHER VIEW ************/
+
+/************ NEWS VIEW ************/
 
 .pubLogo {
     height: 70px;

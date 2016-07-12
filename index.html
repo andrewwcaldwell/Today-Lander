@@ -31,17 +31,19 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 <body>
     <div class="fullWrapper">
         <header class="flexRow">
-        <img src="resource/burgundy.png"/>
-        <h1> Good Morning Charlotte!!</h1>
-            
+        <!--img src="resource/burgundy.png"/-->            
             <nav class="tab flexRow">
-                <a href="#/userId/news"><img class="icon" src="../resource/weather.png"/></a>
+                <a href="#/userId/home"><img class="icon" src="../resource/home.png"/></a>
+                
+                <a href="#/userId/weather"><img class="icon" src="../resource/weather.png"/></a>
 
                 <a href="#/userId/news"><img class="icon" src="../resource/news.png"/></a>
+                
+                <a href="#/userId/interests"> Ints </a>
 
-                <a href="#/userId/news"><img class="icon" src="../resource/bookmark.png"/></a>
+                <a href="#/userId/bookmarks"><img class="icon" src="../resource/bookmark.png"/></a>
 
-                <a href="#/userId/news"><img class="icon" src="../resource/todo.png"/></a>
+                <a href="#/userId/todo"><img class="icon" src="../resource/todo.png"/></a>
             </nav>
 <!--    
         <div class="flexColumn">
@@ -56,7 +58,7 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
         </header>
 
         <!-- ANGULAR FRAMEWORK CONTROL BEGINS HEREREREERERERER -->
-        <main ng-view class="viewWrapper flexColumn"></main>
+        <main ng-view class="viewWrapper"></main>
     </div>
 </body>
 

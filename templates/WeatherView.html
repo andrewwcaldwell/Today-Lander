@@ -1,0 +1,10 @@
+<div class="contentWrapper flexColumn">
+    <h1 class="title"> 7 Day Forecast </h1>
+    <ul class="content flexRow">
+        <li class="item" ng-repeat="daily in weather">
+            <img ng-src="{{ weather.link }}">
+            <p class="hi"> HIGH: <h3>{{ daily.temp.max }}</h3></p>
+            <p class="lo"> LOW: <h3>{{ daily.temp.min}}</h3></p>
+        </li>
+    </ul>
+</div>
