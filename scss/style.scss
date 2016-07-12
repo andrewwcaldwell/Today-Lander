@@ -9,18 +9,19 @@ $tempFont:'Raleway', sans-serif;
 $blue1: #2DFBF6;
 $blue2: #04D7D2;
 
-/*****************************************/
-
 /************** NORMALIZE ****************/
+
 * {
     margin: 0;
     padding: 0;
 }
 
 ul {
-    height: 90%;
+//    height: 80vh;
     overflow: scroll;
     padding: 0% 5% 0% 5%;
+    
+    border: 5px solid darkred;
 }
 
 li {
@@ -33,7 +34,7 @@ a {
 }
 
 h1 {
-    font-size: 50px;
+    font-size: 80px;
 }
 
 h2 {
@@ -44,22 +45,7 @@ h3 {
     font-size: 35px;
 }
 
-header {
-    //background-color: $blue1;
-    align-items: flex-end;
-    padding-top: 15px;
-    padding-left: 30px;
-}
-
-header > img {
-    height: 180px;
-}
-
-header > h1 {
-    font-size: 70px;
-}
-
-/****** Flex Parent / Child RULES ******/
+/************** FLEXBOX P&C RULES **************/
 
 .flexColumn {
     display: flex;
@@ -71,50 +57,60 @@ header > h1 {
     flex-direction: row;
 }
 
-/****** CONTENT SECTIONS ******/
+/************** FULL PAGE RULES ****************/
 
-.viewWrapper {
-    display: flex;
-    height: 800px;
-    width: 100%;
+body {
+    height: 100vh;
+    width: 100vw;
+    
     background-image: url(../resource/char-night.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    
+//    border-bottom: 5px solid purple;
+}
+
+.fullWrapper {
+    height: 100%;
+    width: 100%;
+    background-color: rgba(255,255,255,.5); // ADD OPACITY from Pos. 4
+
+//    border-bottom: 5px solid cyan;
+}
+
+/************** HEADER RULES ****************/
+
+header {
+    align-items: flex-end;
+    padding-top: 15px;
+    padding-left: 30px;
+    height: 10%;
+//    background-color: $blue1;
+}
+
+header > img {
+    height: 95%;
+    
+//    border: 1px solid black;
+}
+
+/************ CONTENT VIEW ************/
+
+.viewWrapper {
+    display: flex;
+    width: 100%;
+    height: 90%;
+    
+    border: 1px solid yellow;
 }
 
 .contentWrapper {
-    //padding: 0% 5% 0% 5%;
-}
-
-.content {
-    display: none;
-    //width: 1200px;
-    height: 700px;
-}
-
-.show {
-    display: block;
-    flex-grow: 7;
-}
-
-.subHead {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    background-color: lightgray;
-    border-bottom: 5px solid darkgray;
-}
-
-.icon {
-    width: 50px;
-    height: 50px;
-    margin: 10px 15px 10px 15px;
+    border: 1px solid white;
 }
 
 .tab {
     background-color: $blue2;
-    //border-bottom: 5px solid darkgray;
     width: 100%;
 }
 
@@ -122,7 +118,32 @@ header > h1 {
     background-color: $blue1;
 }
 
+.icon {
+    width: 60px;
+    height: 60px;
+    margin: 5px 15px 5px 15px;
+//    border: 1px solid blue;
+}
 
+.subHead {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    background-color: purple;
+    border-bottom: 5px solid darkgray;
+}
+
+/************ SHOW / HIDE RULES ************/
+
+.content {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+/************ NG-REPEAT SECTIONS ************/
 
 .item {
     background-color: white;
@@ -131,5 +152,5 @@ header > h1 {
 }
 
 .pubLogo {
-    width: 300px;
+    height: 70px;
 }

@@ -28,25 +28,26 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
     <script src="js/app.js"></script>
 </head>
 
-<header class="flexRow">
-    <img src="resource/burgundy.png"/>
-    <h1> Good Morning Charlotte!!</h1>
-<!--    
-    <div class="flexColumn">
-        <h1> Good Morning Charlotte!!</h1>
-        <nav>
-            <a href="#/userId/news"> Home </a>
-            <a href="#/userId/interests"> Interests </a>
-            <a href="#/userId/bookmarks"> Saved </a>
-        </nav>
-    </div>
--->
-</header>
-
 <body>
-    <!-- ANGULAR FRAMEWORK BEGINS HEREREREERERERER -->
-    <div ng-view class="viewWrapper flexColumn"></div>
+    <div class="fullWrapper">
+        <header class="flexRow">
+        <img src="resource/burgundy.png"/>
+        <h1> Good Morning Charlotte!!</h1>
+<!--    
+        <div class="flexColumn">
+            <h1> Good Morning Charlotte!!</h1>
+            <nav>
+                <a href="#/userId/news"> Home </a>
+                <a href="#/userId/interests"> Interests </a>
+                <a href="#/userId/bookmarks"> Saved </a>
+            </nav>
+        </div>
+-->
+        </header>
 
+        <!-- ANGULAR FRAMEWORK BEGINS HEREREREERERERER -->
+        <main ng-view class="viewWrapper flexColumn"></main>
+    </div>
 </body>
 
 </html>
