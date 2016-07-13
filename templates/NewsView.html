@@ -1,10 +1,8 @@
-<div class="contentWrapper">
-    <h2> Recent News </h2>
-    <ul>
+<div class="contentWrapper flexColumn">
+    <h1 class="title"> Recent News </h1>
+    <ul class="forecast">
         <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
         <li class="item" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
-
-            <img class="pubLogo" ng-src="{{ article.logo }}">
 
             <a class="noTarg" href="{{ article.link }}"><img class="icon" ng-src="../resource/globe.png"/> </a>
 
@@ -12,10 +10,10 @@
 
             <div class="stories">
 
-                <p class="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
+                <p class="..."><a href="{{ article.link }}"> {{ article.title }} </a></p>
 
                 <!-- Applied Custom Filter from filters.js -->
-                <p class="published">Published {{ article.published | fromNow }} ... </p>
+                
 
                 <!-- ul for Interests that Match and have been applied as a new property of the Article -->
 
@@ -24,6 +22,8 @@
                         <p> #{{ int }} </p>
                     </li>
                 </ul>
+                <img class="pubLogo" ng-src="{{ article.logo }}">
+                <p class="published">Published {{ article.published | fromNow }} ... </p>
             </div>
         </li>
     </ul>

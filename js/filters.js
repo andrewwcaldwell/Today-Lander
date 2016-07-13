@@ -44,6 +44,13 @@ module.exports = (function() {
             }
             return day;
         };
+        
+    }).filter('farenheit', function(){
+        
+        return function(input) {
+            return Math.round(input) + "\xB0 F";
+        };
+
     });
     
     

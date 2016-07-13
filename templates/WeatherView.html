@@ -1,11 +1,11 @@
-<div class="contentWrapper flexColumn">
+<div class="contentWrapper">
     <h1 class="title"> 7 Day Forecast </h1>
     <ul class="forecast">
-        <li class="item" ng-repeat="daily in weather">
-            <p>{{ daily.dt | unixEp }}</p>
+        <li class="item frameTheme" ng-repeat="daily in weather">
+            <span class="blockBottom"><p>{{ daily.dt | unixEp }}</p></span>
+            <p class="hi"> HIGH: <h3>{{ daily.temp.max | farenheit }}</h3></p>
+            <p class="lo"> LOW: <h3>{{ daily.temp.min | farenheit }}</h3></p>
             <img ng-src="http://openweathermap.org/img/w/{{ daily.weather[0].icon}}.png" class="icon">
-            <p class="hi"> HIGH: <h3>{{ daily.temp.max }}</h3></p>
-            <p class="lo"> LOW: <h3>{{ daily.temp.min}}</h3></p>
             <p> {{ daily.weather[0].description }} </p>
         </li>
     </ul>

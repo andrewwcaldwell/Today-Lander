@@ -1,22 +1,23 @@
-<h1> BOOKMARKS COMING </h1>
+<div class="contentWrapper flexColumn">
+    <h1 class="title"> BOOKMARKS COMING </h1>
+    <ul>
+        <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
+        <li ng-repeat="article in news | orderBy:'-published' | filter: pancake">
 
-<ul>
-    <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
-    <li ng-repeat="article in news | orderBy:'-published' | filter: pancake">
-        
-        <a href="{{ article.link }}"> <img id="globe" ng-src="../resource/globe.png"/> </a>
+            <a href="{{ article.link }}"> <img id="globe" ng-src="../resource/globe.png"/> </a>
 
 
-        <section id="stories">
+            <section id="stories">
 
-            <p id="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
+                <p id="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
 
-            
-            <img id="delete2" src="../resource/delete copy.png" ng-click="clickSendID( article.id )">
-            
-            <!-- Applied Custom Filter from filters.js -->
-            <p id="published">Published {{ article.published | fromNow }}...</p>
 
-        </section> 
-    </li>
-</ul>
+                <img id="delete2" src="../resource/delete copy.png" ng-click="clickSendID( article.id )">
+
+                <!-- Applied Custom Filter from filters.js -->
+                <p id="published">Published {{ article.published | fromNow }}...</p>
+
+            </section> 
+        </li>
+    </ul>
+</div>

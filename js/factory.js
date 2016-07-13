@@ -12,13 +12,13 @@ module.exports = (function() {
         var publishers = []; // all publishers
         
         // DAILY QUOTE WEBSERVICE
-        $http({
-            method: 'GET',
-            url: 'http://quotes.rest/qod.json'
-        }).then(function (response) {
-            angular.copy(response.data.contents.quotes[0], quote);
-            console.log(quote);
-        });
+//        $http({
+//            method: 'GET',
+//            url: 'http://quotes.rest/qod.json'
+//        }).then(function (response) {
+//            angular.copy(response.data.contents.quotes[0], quote);
+//            console.log(quote);
+//        });
 
         
         var weather = [];
@@ -107,8 +107,12 @@ module.exports = (function() {
             
             /// Function to Deliver Daily Quote Array to Home Controller
             getQuote: function () {
+                if (quote.length === 0) {
+                    quote = {quote: "\"The problem with quotes found on the internet is that they are often not true\"", author: "Abraham Lincoln"};
+                } else { 
+                    return quote;
+                }
                 console.log(quote);
-                return quote;
             },
             
             /// Function to Deliver News Article Array to News Controller

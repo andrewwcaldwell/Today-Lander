@@ -19,11 +19,6 @@ $blue3: #167D7B;
     padding: 0;
 }
 
-ul {
-//    overflow: scroll;
-//    padding: 0% 5% 0% 5%;
-}
-
 ul, li {
     font-family: $tempFont;
     list-style: none;
@@ -84,13 +79,13 @@ body {
 
 /************** HEADER RULES ****************/
 
-.tab {
+nav {
     background-color: $blue3;
-    width: 100%;
     padding-left: 2%;
+    // No Height Specific Height Rule Creating Bottom Edge Bleed Issue on viewWrapper - Fringe Issue
 }
 
-.tab:hover {
+nav:hover {
     background-color: $blue2;
 }
 
@@ -109,68 +104,93 @@ body {
     height: 90%;
 }
 
-.centerBlock {
-    margin: 5% 10%;
-    //border: 1px solid red;
+.contentWrapper {
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
+    
+//    border: 1px solid red;
 }
 
 .title {
+    display: inherit;
+    justify-content: center;
+    align-items: center;
     font-family: $tempFont;
-    text-align: center;
     color: white;
-    margin: 3%;
+    height: 20%;
+    
+//    border: 1px solid green;  
 }
 
-.item {
-    background-color: lightskyblue;
-    border: 4px solid darkgray;
-    margin: 20px;
+.frameTheme {
+    background-color: rgba(255,255,255,.5);
+    border: 1% solid $blue3;
+    color: $blue3;  
+}
+
+.frameTheme:hover {
+    background-color: #cccccc;
+    //border: 15px solid $blue2;
 }
 
 /************ HOME VIEW ************/
 
 .quoteWrapper {
-    background-color: rgba(255,255,255,.5);
-    border: 15px solid $blue3;
-    font-family: $quoteScript;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     text-align: center;
-    color: $blue3;
-    padding: 5%;
-    //margin: 2%;
-}
-.quoteWrapper:hover {
-    background-color: #cccccc;
-    //border: 15px solid $blue2;
+    font-family: $quoteScript;
+    
+    border: 15px solid $blue3;
 }
 .quote {
+    display: flex;
     margin: 2%;
 }
 
 /************ WEATHER VIEW ************/
 .forecast {
     display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    
-    border: 1px solid red;
+    height: 80%;
+    overflow-x: scroll;
+    overflow-y: hidden;   
 }
 .item {
-    background-color: rgba(255,255,255,.5);
-    border: 15px solid $blue3;
+    display: flex;
+    flex-direction: column;
     text-align: center;
-    color: $blue3;
-    //margin: 20px;
-    width: 15%;
-    height: 60%;
+    align-items: center;
+    
+    margin: 10px;
+    width: 500px;
+    height: 90%;
+    
+//    border: 2px solid purple;
     
 }
-.item:hover {
-    background-color: #cccccc;
-    //border: 15px solid $blue2;
+.blockBottom {
+    background-color: $blue3;
+    color: white;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.blockBottom > p {
+    margin: 10px;
 }
 /************ NEWS VIEW ************/
 
+.news {
+    height: 85%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
 .pubLogo {
-    height: 70px;
+    width: 70%;
 }
