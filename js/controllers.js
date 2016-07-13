@@ -9,9 +9,11 @@ module.exports = (function() {
         console.log(AppService.silento()); //Factory
         */
         
-        // Get Date for Display
-        $scope.date = "01.01.2106"; //AppService.getArticles();
-        // Add Moment.JS Instance or USE FILTER
+        // Get Today's Date for Display
+        $scope.date = Date.now();
+        
+        // Get Daily Quote
+        $scope.quote = AppService.getQuote();
         
         // FIND QUOTE GEN API AND INCLUDE
     }]);

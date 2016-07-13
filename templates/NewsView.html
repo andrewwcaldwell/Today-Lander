@@ -1,35 +1,30 @@
 <div class="contentWrapper">
-    <section class="content" id="news">
-        <div class="subHead" ng-click="classRemove(dataGroups[1])">
-            <img class="icon" src="../resource/arrow-up.png"/>
-            <h2> Recent News </h2>
-        </div>
-        <ul>
-            <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
-            <li class="item" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
+    <h2> Recent News </h2>
+    <ul>
+        <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
+        <li class="item" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
 
-                <img class="pubLogo" ng-src="{{ article.logo }}">
+            <img class="pubLogo" ng-src="{{ article.logo }}">
 
-                <a class="noTarg" href="{{ article.link }}"><img class="icon" ng-src="../resource/globe.png"/> </a>
+            <a class="noTarg" href="{{ article.link }}"><img class="icon" ng-src="../resource/globe.png"/> </a>
 
-                <img class="icon" src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
+            <img class="icon" src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
 
-                <div class="stories">
+            <div class="stories">
 
-                    <p class="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
+                <p class="title"><a href="{{ article.link }}"> {{ article.title }} </a></p>
 
-                    <!-- Applied Custom Filter from filters.js -->
-                    <p class="published">Published {{ article.published | fromNow }} ... </p>
+                <!-- Applied Custom Filter from filters.js -->
+                <p class="published">Published {{ article.published | fromNow }} ... </p>
 
-                    <!-- ul for Interests that Match and have been applied as a new property of the Article -->
+                <!-- ul for Interests that Match and have been applied as a new property of the Article -->
 
-                    <ul class="viewInts">
-                        <li class ="int" ng-repeat="int in article.interests track by $index">
-                            <p> #{{ int }} </p>
-                        </li>
-                    </ul>
-                </div>
-            </li>
-        </ul>
-    </section>
+                <ul class="viewInts">
+                    <li class ="int" ng-repeat="int in article.interests track by $index">
+                        <p> #{{ int }} </p>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
 </div>

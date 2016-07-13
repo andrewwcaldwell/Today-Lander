@@ -4,12 +4,22 @@ module.exports = (function() {
     
     appFactory.factory('AppService', function ($http, $q) {
         // LOCAL VARS
+        var quote = [];      // daily quote
         var news = [];       // all articles
         var current = {};    // current article
         var bookmarks = [];  // bookmarked articles
         var interests = [];  // all interests
         var publishers = []; // all publishers
         
+        // DAILY QUOTE WEBSERVICE
+        $http({
+            method: 'GET',
+            url: 'http://quotes.rest/qod.json'
+        }).then(function (response) {
+            angular.copy(response.data.contents.quotes[0], quote);
+            console.log(quote);
+        });
+
         
         var weather = [];
         // TO-DO Wire Up Location services and Find() with cities.json for adjustable xURL
@@ -17,9 +27,7 @@ module.exports = (function() {
         var KEY = 'e25e68ed83e545588247aaced65f888d'; // THIS Project Key
         // Full string http://api.openweathermap.org/data/2.5/forecast/daily?id=4460243&units=imperial&appid=e25e68ed83e545588247aaced65f888d
         
-        // BREAK TO MODULE --- Import Weather API Module into Factory w/ Getter&Setter
-        //require('./mod-weather');
-        
+        // WEATHER FORECAST WEBSERVICE
         $http({
             method: 'GET', 
             url: 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + xURL + '&units=imperial&appid=' + KEY
@@ -27,6 +35,7 @@ module.exports = (function() {
             angular.copy(response.data.list, weather);
             //console.log(weather);
         });
+
         
         /// THE KAMEHAMEHA PROMISE FOR API AJAX
         /// CALLS FEED AND PUBLISHER; BLEND TO ONE RESOURCE ARRAY 
@@ -96,9 +105,15 @@ module.exports = (function() {
         /// FACTORY RETURN OBJECT 
         return {
             
-            /// Function to Deliver News Array to Feed/Input
-            /// Function Analyzes Artilce Titles and User Interest
-            /// Interest Matches Are Added to new Article Property
+            /// Function to Deliver Daily Quote Array to Home Controller
+            getQuote: function () {
+                console.log(quote);
+                return quote;
+            },
+            
+            /// Function to Deliver News Article Array to News Controller
+            /// Function Analyzes Article Titles and User Interest
+            /// Interest Matches Are Added to a new Article Object Property
             getArticles: function () {
                 for (let i = 0; i < news.length; i++) {
                     news[i].interests = [];
