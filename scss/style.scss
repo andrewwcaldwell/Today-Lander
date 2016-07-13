@@ -24,7 +24,7 @@ ul {
 //    padding: 0% 5% 0% 5%;
 }
 
-li {
+ul, li {
     font-family: $tempFont;
     list-style: none;
 }
@@ -109,9 +109,6 @@ body {
     height: 90%;
 }
 
-.content {
-    border: 1px solid red;
-}
 .centerBlock {
     margin: 5% 10%;
     //border: 1px solid red;
@@ -142,14 +139,36 @@ body {
     //margin: 2%;
 }
 .quoteWrapper:hover {
-    border: 15px solid $blue2;
+    background-color: #cccccc;
+    //border: 15px solid $blue2;
 }
 .quote {
     margin: 2%;
 }
 
 /************ WEATHER VIEW ************/
-
+.forecast {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    
+    border: 1px solid red;
+}
+.item {
+    background-color: rgba(255,255,255,.5);
+    border: 15px solid $blue3;
+    text-align: center;
+    color: $blue3;
+    //margin: 20px;
+    width: 15%;
+    height: 60%;
+    
+}
+.item:hover {
+    background-color: #cccccc;
+    //border: 15px solid $blue2;
+}
 /************ NEWS VIEW ************/
 
 .pubLogo {

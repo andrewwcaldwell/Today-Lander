@@ -1,11 +1,39 @@
 module.exports = (function() {
     var controllers = angular.module('AppControllers', []);
     
-    ////// Controller for FEED / STREAM //////
-    controllers.controller('LiveStreamController', ['$scope', 'AppService', function ($scope, AppService) {
+    
+    ////// Controller for HOME //////
+    controllers.controller('HomeController', ['$scope', 'AppService', function ($scope, AppService) {
         /* Service Test
-        console.log('Live Stream View Working'); //Router
-        console.log(NewsService.silento()); //Factory
+        console.log('Home View Working'); //Router
+        console.log(AppService.silento()); //Factory
+        */
+        
+        // Get Date for Display
+        $scope.date = "01.01.2106"; //AppService.getArticles();
+        // Add Moment.JS Instance or USE FILTER
+        
+        // FIND QUOTE GEN API AND INCLUDE
+    }]);
+    
+    ////// Controller for WEATHER //////
+    controllers.controller('WeatherController', ['$scope', 'AppService', function ($scope, AppService) {
+        /* Service Test
+        console.log('Weather View Working'); //Router
+        console.log(AppService.silento()); //Factory
+        */
+        
+        // Get Weather Forecasts
+        $scope.weather = AppService.getWeather();
+        console.log(AppService.getWeather());
+        
+    }]);
+    
+    ////// Controller for NEWS //////
+    controllers.controller('NewsController', ['$scope', 'AppService', function ($scope, AppService) {
+        /* Service Test
+        console.log('News View Working'); //Router
+        console.log(AppService.silento()); //Factory
         */
         
         // Get Initial Feed Articles
@@ -15,29 +43,13 @@ module.exports = (function() {
         // Bookmark an Article
         $scope.clickSendID = function(ID) {AppService.setBookmark(ID);};
         
-        // Get Weather Forecasts
-        $scope.weather = AppService.getWeather();
-        console.log(AppService.getWeather());
-        
-        
-        // Manage Show-Hide Content  Tabs
-        $scope.dataGroups = ["forecast", "news", "bookmarks", "todo"];
-        
-        $scope.classAttach = function(input) {
-            console.log(input);
-            var element = document.getElementById(input);
-            element.classList.add("show");};
-        
-        $scope.classRemove = function(input) {
-            var element = document.getElementById(input);
-            element.classList.remove("show");};
     }]);
 
     ////// Controller for INTERESTS //////
     controllers.controller('InterestSettingController', ['$scope', 'AppService', function ($scope, AppService) {
         /* Service Test
-        console.log('Live Stream View Working'); //Router
-        console.log(NewsService.silento()); //Factory
+        console.log('Interest View Working'); //Router
+        console.log(AppService.silento()); //Factory
         */
         
         // Add an Interest & Clear Input Field / Value
@@ -60,8 +72,8 @@ module.exports = (function() {
     ////// Controller for BOOKMARKS //////
     controllers.controller('BookmarkController', ['$scope', 'AppService', function ($scope, AppService) {
         /* Service Test
-        console.log('Live Stream View Working'); //Router
-        console.log(NewsService.silento()); //Factory
+        console.log('Bookmark View Working'); //Router
+        console.log(AppService.silento()); //Factory
         */
         
         // Get Bookmarked Articles
