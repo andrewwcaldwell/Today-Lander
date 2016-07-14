@@ -1,30 +1,24 @@
-<div class="contentWrapper flexColumn">
-    <h1 class="title"> Recent News </h1>
-    <ul class="forecast">
-        <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
-        <li class="item" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
+<h1 class="title"> Recent News </h1>
+<ul class="news">
+    <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
+    <li class="newsWrapper frameTheme" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
+        <figure class="logoBlock">
+            <img class="logo" ng-src="../resource/pub_{{ article.providerId }}.png">
+        </figure>
+        <section class="flexColumn article">
+            <h3 class="..."><a href="{{ article.link }}"> {{ article.title }} </a></h3>
+            <!-- Applied Custom Filter from filters.js -->
 
-            <a class="noTarg" href="{{ article.link }}"><img class="icon" ng-src="../resource/globe.png"/> </a>
+            <!-- ul for Interests that Match and have been applied as a new property of the Article -->
 
-            <img class="icon" src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
-
-            <div class="stories">
-
-                <p class="..."><a href="{{ article.link }}"> {{ article.title }} </a></p>
-
-                <!-- Applied Custom Filter from filters.js -->
-                
-
-                <!-- ul for Interests that Match and have been applied as a new property of the Article -->
-
-                <ul class="viewInts">
-                    <li class ="int" ng-repeat="int in article.interests track by $index">
-                        <p> #{{ int }} </p>
-                    </li>
-                </ul>
-                <img class="pubLogo" ng-src="{{ article.logo }}">
+            <ul class="viewInts">
+                <li class ="int" ng-repeat="int in article.interests track by $index">#{{ int }}
+                </li>
+            </ul>   
+            <div class="flexRow">
+                <img class="save" src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
                 <p class="published">Published {{ article.published | fromNow }} ... </p>
             </div>
-        </li>
-    </ul>
-</div>
+        </section>
+    </li>
+</ul>

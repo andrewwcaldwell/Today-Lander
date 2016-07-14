@@ -1,24 +1,22 @@
-<div class="contentWrapper">
-    <h1>INTERESTS HERE!!</h1>
-    <section class="content" id="forecast">
-        <div class="subHead" ng-click="classRemove(dataGroups[0])">
-            <img class="icon" src="../resource/arrow-up.png"/>
-            <h2> 5 Day Forecast </h2>
-        </div>
-        
-        <span class="interestPanel">
-            <input id="interestInput" type="text" ng-model="newInterest"/>
-            <img id="plus" src="../resource/add.png" ng-click="clickSendInput( newInterest )"/>
-        </span>
+<h1 class="title">INTERESTS COMING</h1>
+<section class="content" id="forecast">
+    <div class="subHead" ng-click="classRemove(dataGroups[0])">
+        <img class="icon" src="../resource/arrow-up.png"/>
+        <h2> 5 Day Forecast </h2>
+    </div>
 
-        <p> #{{ newInterest }} </p>
+    <span class="interestPanel">
+        <input id="interestInput" type="text" ng-model="newInterest"/>
+        <img id="plus" src="../resource/add.png" ng-click="clickSendInput( newInterest )"/>
+    </span>
 
-        <ul>
-            <!--- Applied Filters Interest Sorting Alphabetically -->
-            <li ng-repeat="interest in interests | orderBy: -interest">
-                <p> {{ interest }} </p>
-                <img id="delete" src="../resource/delete.png" ng-click="clickSendID( interest )">
-            </li>
-        </ul>
-    </section>
-</div>
+    <p> #{{ newInterest }} </p>
+
+    <ul>
+        <!--- Applied Filters Interest Sorting Alphabetically -->
+        <li ng-repeat="interest in interests | orderBy: -interest">
+            <p> {{ interest }} </p>
+            <img id="delete" src="../resource/delete.png" ng-click="clickSendID( interest )">
+        </li>
+    </ul>
+</section>

@@ -26,21 +26,23 @@ ul, li {
 
 a {
     text-decoration: none;
+    color: white;
 }
 
 h1 {
-    font-size: 80px;
-}
-
-h2 {
     font-size: 40px;
 }
 
-h3 {
-    font-size: 35px;
+h2 {
+    font-size: 30px;
 }
+
+h3 {
+    font-size: 28px;
+}
+
 p {
-    font-size: 50px;
+    font-size: 25px;
 }
 
 /************** FLEXBOX P&C RULES **************/
@@ -72,7 +74,7 @@ body {
 .fullWrapper {
     height: 100%;
     width: 100%;
-    background-color: rgba(255,255,255,.5);
+    background-color: rgba(255,255,255,.3);
 
 //    border-bottom: 5px solid cyan;
 }
@@ -90,29 +92,21 @@ nav:hover {
 }
 
 .icon {
-    width: 70px;
-    height: 70px;
-    margin: 10px 15px 10px 15px;
-    
-//    border: 1px solid blue;
+    width: 40px;
+    height: 40px;
+    margin: 7px 10px 7px 10px;
 }
 
 /************ CONTENT VIEW ************/
-
 .viewWrapper {
-    width: 100%;
+    width: 90%;
     height: 90%;
-}
-
-.contentWrapper {
-    width: 80%;
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: auto;
     
-//    border: 1px solid red;
+//    border: 2px solid red;
 }
 
 .title {
@@ -128,7 +122,7 @@ nav:hover {
 
 .frameTheme {
     background-color: rgba(255,255,255,.5);
-    border: 1% solid $blue3;
+//    border: 1% solid $blue3;
     color: $blue3;  
 }
 
@@ -147,7 +141,7 @@ nav:hover {
     text-align: center;
     font-family: $quoteScript;
     
-    border: 15px solid $blue3;
+    border: 10px solid $blue3;
 }
 .quote {
     display: flex;
@@ -158,6 +152,7 @@ nav:hover {
 .forecast {
     display: flex;
     height: 80%;
+    
     overflow-x: scroll;
     overflow-y: hidden;   
 }
@@ -168,29 +163,114 @@ nav:hover {
     align-items: center;
     
     margin: 10px;
-    width: 500px;
+//    width: 500px;
     height: 90%;
     
-//    border: 2px solid purple;
-    
+//    border: 2px solid purple;   
 }
-.blockBottom {
+
+.iconW {
+    width: 60px;
+    height: 60px;
+    margin: 10px 15px 10px 15px;
+}
+
+.block {
     background-color: $blue3;
     color: white;
     width: 100%;
     text-align: center;
-    margin-bottom: 30px;
 }
-.blockBottom > p {
+.block > p {
+    font-size: 20px;
     margin: 10px;
 }
+.top {
+    height: 10%;
+}
+.bottom {
+    height: 30%;
+}
+
+.img01n, .img01d {
+    background-image: url(../resource/01d.jpg);
+}
+.img02n, .img02d {
+    background-image: url(../resource/02d.jpg);
+}
+.img03n, .img03d {
+    background-image: url(../resource/03d.jpg);
+}
+.img04n, .img04d {
+    background-image: url(../resource/04d.jpg);
+}
+.img09n, .img09d {
+    background-image: url(../resource/09d.jpg);
+}
+.img10n, .img10d {
+    background-image: url(../resource/10d.jpg);
+}
+.img11n, .img11d {
+    background-image: url(../resource/11d.jpg);
+}
+.img13n, .img13d {
+    background-image: url(../resource/13d.jpg);
+}
+.img50n, .img50d {
+    background-image: url(../resource/50d.jpg);
+}
+.img01n, .img01d, .img02n, .img02d, .img03n, .img03d, .img04n, .img04d, .img09n, .img09d, .img10n, .img10d, .img11n, .img11d, .img13n, .img13d, .img50n, .img50d {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
 /************ NEWS VIEW ************/
 
 .news {
-    height: 85%;
+    height: 80%;
+    width: 100%;
     overflow-y: scroll;
     overflow-x: hidden;
+    
+//    border: 1px solid red;
 }
-.pubLogo {
-    width: 70%;
+.newsWrapper {
+    display: flex;
+    flex-direction: row;
+//    justify-content: center;
+//    align-items: center;
+//    text-align: center;
+//    font-family: $quoteScript;
+    margin-bottom: 20px;
+    
+    border: 10px solid $blue3;
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+//    border: 2px solid red;
+}
+
+.logoBlock {
+    width: 120px;
+    background-color: $blue3;
+}
+
+.logo {
+    width: 100px;
+    margin: 10px;
+}
+
+.save {
+    height: 30px;
+    width: 30px;
+    border: 2px solid $blue3;
+}
+.save:hover {
+    border: 2px solid $blue2;
+    cursor: pointer;
 }

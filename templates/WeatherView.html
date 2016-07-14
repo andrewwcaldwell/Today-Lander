@@ -1,12 +1,12 @@
-<div class="contentWrapper">
-    <h1 class="title"> 7 Day Forecast </h1>
-    <ul class="forecast">
-        <li class="item frameTheme" ng-repeat="daily in weather">
-            <span class="blockBottom"><p>{{ daily.dt | unixEp }}</p></span>
+<h1 class="title"> 7 Day Forecast </h1>
+<ul class="forecast">
+    <li class="item img{{ daily.weather[0].icon}}" ng-repeat="daily in weather" >
+        <span class="top block"><p>{{ daily.dt | unixEp }}</p></span>
+        <div class="fullWrapper">
             <p class="hi"> HIGH: <h3>{{ daily.temp.max | farenheit }}</h3></p>
             <p class="lo"> LOW: <h3>{{ daily.temp.min | farenheit }}</h3></p>
-            <img ng-src="http://openweathermap.org/img/w/{{ daily.weather[0].icon}}.png" class="icon">
-            <p> {{ daily.weather[0].description }} </p>
-        </li>
-    </ul>
-</div>
+            <img ng-src="http://openweathermap.org/img/w/{{ daily.weather[0].icon}}.png" class="iconW">
+        </div>
+        <span class="bottom block"><p> {{ daily.weather[0].description }} </p></span>
+    </li>
+</ul>
