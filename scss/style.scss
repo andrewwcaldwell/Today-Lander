@@ -1,13 +1,16 @@
 @import url(https://fonts.googleapis.com/css?family=Raleway:600);
+@import url('https://fonts.googleapis.com/css?family=Galada');
 
 /************** SASS VARS ****************/
 
 //FONT SETS
 $tempFont:'Raleway', sans-serif;
+$quoteScript:'Galada', cursive;
 
 // COLOR PALLET
 $blue1: #2DFBF6;
 $blue2: #04D7D2;
+$blue3: #167D7B;
 
 /************** NORMALIZE ****************/
 
@@ -16,15 +19,7 @@ $blue2: #04D7D2;
     padding: 0;
 }
 
-ul {
-//    height: 80vh;
-    overflow: scroll;
-    padding: 0% 5% 0% 5%;
-    
-    border: 5px solid darkred;
-}
-
-li {
+ul, li {
     font-family: $tempFont;
     list-style: none;
 }
@@ -34,15 +29,19 @@ a {
 }
 
 h1 {
-    font-size: 80px;
-}
-
-h2 {
     font-size: 40px;
 }
 
+h2 {
+    font-size: 30px;
+}
+
 h3 {
-    font-size: 35px;
+    font-size: 28px;
+}
+
+p {
+    font-size: 18px;
 }
 
 /************** FLEXBOX P&C RULES **************/
@@ -63,7 +62,7 @@ body {
     height: 100vh;
     width: 100vw;
     
-    background-image: url(../resource/char-night.jpg);
+    background-image: url(../resource/char-evening.jpg);
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
@@ -74,83 +73,305 @@ body {
 .fullWrapper {
     height: 100%;
     width: 100%;
-    background-color: rgba(255,255,255,.5); // ADD OPACITY from Pos. 4
+    background-color: rgba(255,255,255,.3);
 
 //    border-bottom: 5px solid cyan;
 }
 
 /************** HEADER RULES ****************/
 
-header {
-    align-items: flex-end;
-    padding-top: 15px;
-    padding-left: 30px;
-    height: 10%;
-//    background-color: $blue1;
+nav {
+    background-color: $blue3;
+    padding-left: 2%;
+    // No Height Specific Height Rule Creating Bottom Edge Bleed Issue on viewWrapper - Fringe Issue
 }
 
-header > img {
-    height: 95%;
-    
-//    border: 1px solid black;
+//nav:hover {
+//    background-color: $blue2;
+//}
+.hide {
+    display: none;
+}
+.icon {
+    width: 40px;
+    height: 40px;
+    margin: 7px 10px 7px 10px;
+}
+
+.homeIcon {
+	background: url('../resource/menuSprite.png') no-repeat -42px -1px;
+	width: 38px;
+	height: 38px;
+}
+.homeIcon:hover {
+    background: url('../resource/menuSprite.png') no-repeat -41px -80px;
+	width: 38px;
+	height: 38px;
+}
+
+
+.weatherIcon {
+    background: url('../resource/menuSprite.png') no-repeat -80px -1px;
+	width: 40px;
+	height: 35px;
+}
+.weatherIcon:hover {
+    background: url('../resource/menuSprite.png') no-repeat -80px -82px;
+	width: 40px;
+	height: 35px;
+}
+
+
+.newsIcon {
+    background: url('../resource/menuSprite.png') no-repeat -121px -2px;
+	width: 38px;
+	height: 38px;
+}
+.newsIcon:hover {
+    background: url('../resource/menuSprite.png') no-repeat -121px -81px;
+	width: 38px;
+	height: 38px;
+}
+
+
+.bookmarkIcon {
+    background: url('../resource/menuSprite.png') no-repeat -166px -2px;
+	width: 27px;
+	height: 36px;
+}
+.bookmarkIcon:hover {
+    background: url('../resource/menuSprite.png') no-repeat -166px -81px;
+	width: 27px;
+	height: 36px;
+}
+
+
+.todoIcon {
+    background: url('../resource/menuSprite.png') no-repeat -205px 0px;
+	width: 30px;
+	height: 41px;
+}
+.todoIcon:hover {
+    background: url('../resource/menuSprite.png') no-repeat -205px -79px;
+	width: 30px;
+	height: 41px;
+}
+
+
+.trashIcon {
+    background: url('../resource/menuSprite.png') no-repeat -2px -40px;
+	width: 37px;
+	height: 38px;
+}
+.trashIcon:hover {
+    background: url('../resource/menuSprite.png') no-repeat -2px -122px;
+	width: 37px;
+	height: 38px;
 }
 
 /************ CONTENT VIEW ************/
-
 .viewWrapper {
-    display: flex;
-    width: 100%;
+    width: 90%;
     height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto;
     
-    border: 1px solid yellow;
+//    border: 2px solid red;
 }
 
-.contentWrapper {
-    border: 1px solid white;
+.title {
+    display: inherit;
+    justify-content: center;
+    align-items: center;
+    font-family: $tempFont;
+    color: white;
+    height: 20%;
+    
+//    border: 1px solid green;  
 }
 
-.tab {
-    background-color: $blue2;
-    width: 100%;
+.frameTheme {
+    background-color: rgba(255,255,255,.5);
+//    border: 1% solid $blue3;
+    color: $blue3;  
 }
 
-.tab:hover {
-    background-color: $blue1;
+.frameTheme:hover {
+    background-color: #cccccc;
+    //border: 15px solid $blue2;
 }
 
-.icon {
+/************ HOME VIEW ************/
+
+.quoteWrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-family: $quoteScript;
+    
+    border: 10px solid $blue3;
+}
+.quoteT {
+    display: flex;
+    margin: 2%;
+}
+
+/************ WEATHER VIEW ************/
+.forecast {
+    display: flex;
+    flex-flow: row wrap; // flex-direction: row + flex-wrap: wrap;
+    justify-content: center;
+    height: 80%;
+    
+    overflow-x: hidden;
+    overflow-y: scroll; 
+    
+//    border: 2px solid red;
+}
+.item {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    
+    margin: 10px;
+    width: 200px;
+    height: 95%;
+    
+//    border: 2px solid purple;   
+}
+.daily {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.hi, .lo {
+    margin: 4% 0 4% 0;
+}
+
+.iconW {
     width: 60px;
     height: 60px;
-    margin: 5px 15px 5px 15px;
-//    border: 1px solid blue;
+    margin: 10px 15px 10px 15px;
 }
 
-.subHead {
+.block {
+    background-color: $blue3;
+    color: white;
+    width: 100%;
+    text-align: center;
+}
+.block > p {
+    font-style: italic;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.top {
+    height: 38px;
+}
+.bottom {
+    height: 20%;
+}
+
+.img01n, .img01d {
+    background-image: url(../resource/01d.jpg);
+}
+.img02n, .img02d {
+    background-image: url(../resource/02d.jpg);
+}
+.img03n, .img03d {
+    background-image: url(../resource/03d.jpg);
+}
+.img04n, .img04d {
+    background-image: url(../resource/04d.jpg);
+}
+.img09n, .img09d {
+    background-image: url(../resource/09d.jpg);
+}
+.img10n, .img10d {
+    background-image: url(../resource/10d.jpg);
+}
+.img11n, .img11d {
+    background-image: url(../resource/11d.jpg);
+}
+.img13n, .img13d {
+    background-image: url(../resource/13d.jpg);
+}
+.img50n, .img50d {
+    background-image: url(../resource/50d.jpg);
+}
+.img01n, .img01d, .img02n, .img02d, .img03n, .img03d, .img04n, .img04d, .img09n, .img09d, .img10n, .img10d, .img11n, .img11d, .img13n, .img13d, .img50n, .img50d {
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+}
+
+/************ NEWS VIEW ************/
+
+.news {
+    height: 80%;
+    width: 100%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    
+//    border: 1px solid red;
+}
+.newsWrapper {
+    display: flex;
+    flex-direction: row;
+//    justify-content: center;
+//    align-items: center;
+//    text-align: center;
+//    font-family: $quoteScript;
+    margin-bottom: 20px;
+    
+    border: 10px solid $blue3;
+}
+
+.article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    padding: 5px;
+//    border: 2px solid red;   
+}
+.article > a {
+    color: $blue3;
+}
+.article > a:hover {
+    color: $blue2;
+}
+
+.logoBlock {
+    width: 120px;
+    background-color: $blue3;
+    margin-right: 5px;
+}
+
+.logoBlock > img {
+    width: 100px;
+    margin: 10px;
+}
+
+.bottomBar {
     display: flex;
     flex-direction: row;
     align-items: center;
-    background-color: purple;
-    border-bottom: 5px solid darkgray;
 }
-
-/************ SHOW / HIDE RULES ************/
-
-.content {
-    display: none;
+.bottomBar > p {
+//    color: white;
+    font-style: italic;
+    margin-left: 5px;
 }
-
-.show {
-    display: block;
+.save {
+    padding: 4px 4px 2px 4px;
+    background-color: $blue3;
 }
-
-/************ NG-REPEAT SECTIONS ************/
-
-.item {
-    background-color: lightskyblue;
-    border: 4px solid darkgray;
-    margin: 20px;
-}
-
-.pubLogo {
-    height: 70px;
+.save:hover {
+    cursor: pointer;
 }

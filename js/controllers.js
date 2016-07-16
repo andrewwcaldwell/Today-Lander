@@ -1,74 +1,90 @@
 module.exports = (function() {
-    var controllers = angular.module('NewsAppControllers', []);
+    var controllers = angular.module('AppControllers', []);
     
-    ////// Controller for FEED / STREAM //////
-    controllers.controller('LiveStreamController', ['$scope', 'NewsService', function ($scope, NewsService) {
+    
+    ////// Controller for HOME //////
+    controllers.controller('HomeController', ['$scope', 'AppService', function ($scope, AppService) {
         /* Service Test
-        console.log('Live Stream View Working'); //Router
-        console.log(NewsService.silento()); //Factory
+        console.log('Home View Working'); //Router
+        console.log(AppService.silento()); //Factory
+        */
+        
+        // Get Today's Date for Display
+        $scope.date = Date.now();
+        
+        // Get Daily Quote
+        $scope.quotes = AppService.getQuote();
+        console.log(AppService.getQuote());
+        // FIND QUOTE GEN API AND INCLUDE
+    }]);
+    
+    ////// Controller for WEATHER //////
+    controllers.controller('WeatherController', ['$scope', 'AppService', function ($scope, AppService) {
+        /* Service Test
+        console.log('Weather View Working'); //Router
+        console.log(AppService.silento()); //Factory
+        */
+        
+        // Get Weather Forecasts
+        $scope.weather = AppService.getWeather();
+        console.log(AppService.getWeather());
+        
+        $scope.counter = AppService.getCounter();
+        
+    }]);
+    
+    ////// Controller for NEWS //////
+    controllers.controller('NewsController', ['$scope', 'AppService', function ($scope, AppService) {
+        /* Service Test
+        console.log('News View Working'); //Router
+        console.log(AppService.silento()); //Factory
         */
         
         // Get Initial Feed Articles
-        $scope.news = NewsService.getArticles();
+        $scope.news = AppService.getArticles();
         
         
         // Bookmark an Article
-        $scope.clickSendID = function(ID) {NewsService.setBookmark(ID);};
+        $scope.clickSendID = function(ID) {AppService.setBookmark(ID);};
         
-        // Get Weather Forecasts
-        $scope.weather = NewsService.getWeather();
-        console.log(NewsService.getWeather());
-        
-        
-        // Manage Show-Hide Content  Tabs
-        $scope.dataGroups = ["forecast", "news", "todo"];
-        
-        $scope.classAttach = function(input) {
-            console.log(input);
-            var element = document.getElementById(input);
-            element.classList.add("show");};
-        
-        $scope.classRemove = function(input) {
-            var element = document.getElementById(input);
-            element.classList.remove("show");};
     }]);
 
     ////// Controller for INTERESTS //////
-    controllers.controller('InterestSettingController', ['$scope', 'NewsService', function ($scope, NewsService) {
+    controllers.controller('InterestSettingController', ['$scope', 'AppService', function ($scope, AppService) {
         /* Service Test
-        console.log('Live Stream View Working'); //Router
-        console.log(NewsService.silento()); //Factory
+        console.log('Interest View Working'); //Router
+        console.log(AppService.silento()); //Factory
         */
         
         // Add an Interest & Clear Input Field / Value
         $scope.clickSendInput = function(input) {
             //console.log(input);
-            NewsService.addInterest(input);
+            AppService.addInterest(input);
             let a = document.getElementById('interestInput');
             a.value = '';
             $scope.newInterest = null;
         };
         
         // Get User Interests
-        $scope.interests = NewsService.getInterests();
+        $scope.interests = AppService.getInterests();
         
         // Remove an Interest
-        $scope.clickSendID = function(input) {NewsService.removeInterests(input);};
+        $scope.clickSendID = function(input) {AppService.removeInterests(input);};
         
     }]);
     
     ////// Controller for BOOKMARKS //////
-    controllers.controller('BookmarkController', ['$scope', 'NewsService', function ($scope, NewsService) {
+    controllers.controller('BookmarkController', ['$scope', 'AppService', function ($scope, AppService) {
         /* Service Test
-        console.log('Live Stream View Working'); //Router
-        console.log(NewsService.silento()); //Factory
+        console.log('Bookmark View Working'); //Router
+        console.log(AppService.silento()); //Factory
         */
         
         // Get Bookmarked Articles
-        $scope.news = NewsService.getBookmarks();
+        $scope.news = AppService.getBookmarks();
         
         // Un-Bookmark an Articles
-        $scope.clickSendID = function(ID) {NewsService.removeBookmark(ID);};
+        $scope.clickSendID = function(ID) {AppService.removeBookmark(ID);};
     }]);
     
 /// Close IFFE Statement for Module - Immediately available when required in app.js    

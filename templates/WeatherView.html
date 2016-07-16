@@ -1,0 +1,12 @@
+<h1 class="title"> {{ counter }} Day Forecast </h1>
+<ul class="forecast">
+    <li class="item img{{ daily.weather[0].icon}}" ng-repeat="daily in weather | limitTo:counter" >
+        <span class="top block"><p>{{ daily.dt | unixEp }}</p></span>
+        <div class="fullWrapper daily">
+            <p class="hi"> HIGH: <h1>{{ daily.temp.max | farenheit }}</h1></p>
+            <p class="lo"> LOW: <h1>{{ daily.temp.min | farenheit }}</h1></p>
+            <img ng-src="http://openweathermap.org/img/w/{{ daily.weather[0].icon}}.png" class="iconW">
+        </div>
+        <span class="bottom block"><p> {{ daily.weather[0].description }} </p></span>
+    </li>
+</ul>

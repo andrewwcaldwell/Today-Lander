@@ -1,25 +1,25 @@
-<h1 class="title"> Bookmarked Articles </h1>
+<h1 class="title"> Recent News </h1>
 <ul class="news">
     <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
     <li class="newsWrapper frameTheme" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
         <figure class="logoBlock">
-            <img class="logo" ng-src="../resource/pub_{{ article.providerId }}.png">
+            <img ng-src="../resource/pub_{{ article.providerId }}.png">
         </figure>
         <section class="article">
-            <a href="{{article.link }}"><h3> {{ article.title }} </h3></a>
+            <a href="{{ article.link }}"><h3> {{ article.title }} </h3></a>
             <ul class="viewInts">
                 <li ng-repeat="int in article.interests track by $index">#{{ int }}
                 </li>
             </ul>   
             <div class="bottomBar">
                 <div class="save" ng-click="clickSendID( article.id )">
-                    <p class="trashIcon" ></p>
+                    <p class="bookmarkIcon"></p>
                 </div>
                 <p>Published {{ article.published | fromNow }} ... </p>
             </div>
         </section>
     </li>
     <li class="quoteWrapper frameTheme" ng-if="news.length == 0">
-        <h3 class="quoteT">You currently have no bookmarked articles</h3>
+        <h3 class="quoteT">Sorry, it apears your news feed is down right now. Check back later.</h3>
     </li>
 </ul>

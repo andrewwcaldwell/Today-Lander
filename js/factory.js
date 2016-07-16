@@ -1,24 +1,26 @@
 //// Set Module in IFFE so it immediately "unpacks" once required in app.js
 module.exports = (function() {
-    var newsFactory = angular.module('NewsAppFactory', []);
+    var appFactory = angular.module('AppFactory', []);
     
-    newsFactory.factory('NewsService', function ($http, $q) {
-        // LOCAL VARS
-        var news = [];       // all articles
-        var current = {};    // current article
-        var bookmarks = [];  // bookmarked articles
-        var interests = [];  // all interests
-        var publishers = []; // all publishers
+    appFactory.factory('AppService', function ($http, $q) {
+        
+        // DAILY QUOTE WEBSERVICE
+        var quotes = [];      // daily quote
+        
+        $http({
+            method: 'GET',
+            url: 'http://quotes.rest/qod.json'
+        }).then(function (response) {
+            angular.copy(response.data.contents.quotes, quotes);
+        });
         
         
+        // TO-DO: Wire Up Location services and Find() within cities.json for adjustable xURL -OR- User Settings / Location Setting
+        
+        // WEATHER FORECAST WEBSERVICE
         var weather = [];
-        // TO-DO Wire Up Location services and Find() with cities.json for adjustable xURL
         var xURL = '4460243'; // Id for Charlotte, NC
         var KEY = 'e25e68ed83e545588247aaced65f888d'; // THIS Project Key
-        // Full string http://api.openweathermap.org/data/2.5/forecast/daily?id=4460243&units=imperial&appid=e25e68ed83e545588247aaced65f888d
-        
-        // BREAK TO MODULE --- Import Weather API Module into Factory w/ Getter&Setter
-        //require('./mod-weather');
         
         $http({
             method: 'GET', 
@@ -27,9 +29,14 @@ module.exports = (function() {
             angular.copy(response.data.list, weather);
             //console.log(weather);
         });
+
         
         /// THE KAMEHAMEHA PROMISE FOR API AJAX
         /// CALLS FEED AND PUBLISHER; BLEND TO ONE RESOURCE ARRAY 
+        var news = [];       // all articles
+        var current = {};    // current article
+        var publishers = []; // all publishers
+        
         var feed = $http({
             url: 'http://chat.queencityiron.com/api/news/latest',
             method: 'get'
@@ -92,13 +99,23 @@ module.exports = (function() {
             }
         };
  
+        // OTHER LOCAL VARS
+        var bookmarks = [];  // bookmarked articles
+        var interests = [];  // all interests
+        var count = 7;       // forecast setting
+        
     
         /// FACTORY RETURN OBJECT 
         return {
             
-            /// Function to Deliver News Array to Feed/Input
-            /// Function Analyzes Artilce Titles and User Interest
-            /// Interest Matches Are Added to new Article Property
+            /// Function to Deliver Daily Quote Array to Home Controller
+            getQuote: function () {
+                return quotes;
+            },
+            
+            /// Function to Deliver News Article Array to News Controller
+            /// Function Analyzes Article Titles and User Interest
+            /// Interest Matches Are Added to a new Article Object Property
             getArticles: function () {
                 for (let i = 0; i < news.length; i++) {
                     news[i].interests = [];
@@ -179,6 +196,16 @@ module.exports = (function() {
             getWeather: function () {
                 //console.log(weather);
                 return weather;
+            },
+            
+            /// Function for Forecast to Change Count
+            setCounter: function(param) {
+                count = count + param;
+                console.log("count changed by " + param);
+            },
+            
+            getCounter: function() {
+                return count;
             },
             
             /// Function to Set Weather City

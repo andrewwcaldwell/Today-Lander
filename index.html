@@ -1,26 +1,10 @@
-<!--- NOTES FOR EDITING:
---------------------------------------------------
-
-1) Please DON"T restructure HTML w/o some sort of conversation - particularly towards semantics
-
-2) IDs / Classes can be changed as needed
-
-3) Personal preferance to assign classes for CSS work only.
-
-4) Hold IDs for things requiring Jscript actions only
-when possible.
-
-
-PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
-------------------------------------------------->
-
 <!DOCTYPE html>
-<html lang="en" ng-app="AnchormanApp">
+<html lang="en" ng-app="TodayApp">
 
 <head>
     <meta charset="UTF-8">
-    <title> Anchorman News </title>
-    <link rel="shortcut icon" type="image/x-icon" href="./resource/anchor_icon.ico">
+    <title> Today-Lander Page </title>
+    <link rel="shortcut icon" type="image/x-icon" href="./resource/burgundy_icon.ico">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.5/angular-route.min.js"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.7.0/moment.min.js"></script>
@@ -30,23 +14,26 @@ PLEASE ADDRESS USE OF IDs on NEXTROUND OF CSS
 
 <body>
     <div class="fullWrapper">
-        <header class="flexRow">
-        <img src="resource/burgundy.png"/>
-        <h1> Good Morning Charlotte!!</h1>
-<!--    
-        <div class="flexColumn">
-            <h1> Good Morning Charlotte!!</h1>
-            <nav>
-                <a href="#/userId/news"> Home </a>
-                <a href="#/userId/interests"> Interests </a>
-                <a href="#/userId/bookmarks"> Saved </a>
-            </nav>
-        </div>
--->
-        </header>
+        <header>
+            <nav class="flexRow">
+                <a href="#/userId/home" class="icon homeIcon"></a>
+                <a class="hide" href="#/userId/home">Home</a>
+                
+                <a href="#/userId/weather" class="icon weatherIcon"></a>
+                <a class="hide" href="#/userId/home">Weather</a>
 
-        <!-- ANGULAR FRAMEWORK BEGINS HEREREREERERERER -->
-        <main ng-view class="viewWrapper flexColumn"></main>
+                <a href="#/userId/news" class="icon newsIcon"></a>
+                <a class="hide" href="#/userId/home">News</a>
+                
+                <a href="#/userId/bookmarks" class="icon bookmarkIcon"></a>
+                <a class="hide" href="#/userId/home">Bookmarks</a>
+
+                <a href="#/userId/todo" class="icon todoIcon"></a>
+                <a class="hide" href="#/userId/home">Tasks</a>
+            </nav>
+        </header>
+        <!-- ANGULAR FRAMEWORK CONTROL BEGINS HEREREREERERERER -->
+        <main ng-view class="viewWrapper"></main>
     </div>
 </body>
 
