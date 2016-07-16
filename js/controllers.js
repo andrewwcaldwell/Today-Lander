@@ -13,8 +13,8 @@ module.exports = (function() {
         $scope.date = Date.now();
         
         // Get Daily Quote
-        $scope.quote = AppService.getQuote();
-        
+        $scope.quotes = AppService.getQuote();
+        console.log(AppService.getQuote());
         // FIND QUOTE GEN API AND INCLUDE
     }]);
     
@@ -28,6 +28,8 @@ module.exports = (function() {
         // Get Weather Forecasts
         $scope.weather = AppService.getWeather();
         console.log(AppService.getWeather());
+        
+        $scope.counter = AppService.getCounter();
         
     }]);
     

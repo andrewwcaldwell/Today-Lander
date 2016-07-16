@@ -1,5 +1,11 @@
 <h1 class="title"> {{ date | today }} </h1>
-<div class="quoteWrapper frameTheme">
-    <h3 class="quote"> {{ quote.quote }} </h3>
-    <h3 class="quote">-- {{ quote.author }} </h3>
-</div>
+<ul>
+    <li class="quoteWrapper frameTheme" ng-repeat="quote in quotes">
+        <h3 class="quoteT"> {{ quote.quote }} </h3>
+        <h3 class="quoteT">-- {{ quote.author }} </h3>
+    </li>
+    <li class="quoteWrapper frameTheme" ng-if="quotes.length == 0">
+            <h3 class="quoteT"> The problem with quotes found on the internet is that they are often not true </h3>
+        <h3 class="quoteT"> -- Abraham Lincoln </h3>
+    </li>
+</ul>

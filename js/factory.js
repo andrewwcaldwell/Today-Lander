@@ -3,31 +3,25 @@ module.exports = (function() {
     var appFactory = angular.module('AppFactory', []);
     
     appFactory.factory('AppService', function ($http, $q) {
-        // LOCAL VARS
-        var quote = [];      // daily quote
-        var news = [];       // all articles
-        var current = {};    // current article
-        var bookmarks = [];  // bookmarked articles
-        var interests = [];  // all interests
-        var publishers = []; // all publishers
         
         // DAILY QUOTE WEBSERVICE
-//        $http({
-//            method: 'GET',
-//            url: 'http://quotes.rest/qod.json'
-//        }).then(function (response) {
-//            angular.copy(response.data.contents.quotes[0], quote);
-//            console.log(quote);
-//        });
-
+        var quotes = [];      // daily quote
         
-        var weather = [];
-        // TO-DO Wire Up Location services and Find() with cities.json for adjustable xURL
-        var xURL = '4460243'; // Id for Charlotte, NC
-        var KEY = 'e25e68ed83e545588247aaced65f888d'; // THIS Project Key
-        // Full string http://api.openweathermap.org/data/2.5/forecast/daily?id=4460243&units=imperial&appid=e25e68ed83e545588247aaced65f888d
+        $http({
+            method: 'GET',
+            url: 'http://quotes.rest/qod.json'
+        }).then(function (response) {
+            angular.copy(response.data.contents.quotes, quotes);
+        });
+        
+        
+        // TO-DO: Wire Up Location services and Find() within cities.json for adjustable xURL -OR- User Settings / Location Setting
         
         // WEATHER FORECAST WEBSERVICE
+        var weather = [];
+        var xURL = '4460243'; // Id for Charlotte, NC
+        var KEY = 'e25e68ed83e545588247aaced65f888d'; // THIS Project Key
+        
         $http({
             method: 'GET', 
             url: 'http://api.openweathermap.org/data/2.5/forecast/daily?id=' + xURL + '&units=imperial&appid=' + KEY
@@ -39,6 +33,10 @@ module.exports = (function() {
         
         /// THE KAMEHAMEHA PROMISE FOR API AJAX
         /// CALLS FEED AND PUBLISHER; BLEND TO ONE RESOURCE ARRAY 
+        var news = [];       // all articles
+        var current = {};    // current article
+        var publishers = []; // all publishers
+        
         var feed = $http({
             url: 'http://chat.queencityiron.com/api/news/latest',
             method: 'get'
@@ -101,18 +99,18 @@ module.exports = (function() {
             }
         };
  
+        // OTHER LOCAL VARS
+        var bookmarks = [];  // bookmarked articles
+        var interests = [];  // all interests
+        var count = 7;       // forecast setting
+        
     
         /// FACTORY RETURN OBJECT 
         return {
             
             /// Function to Deliver Daily Quote Array to Home Controller
             getQuote: function () {
-                if (quote.length === 0) {
-                    quote = {quote: "\"The problem with quotes found on the internet is that they are often not true\"", author: "Abraham Lincoln"};
-                } else { 
-                    return quote;
-                }
-                console.log(quote);
+                return quotes;
             },
             
             /// Function to Deliver News Article Array to News Controller
@@ -198,6 +196,16 @@ module.exports = (function() {
             getWeather: function () {
                 //console.log(weather);
                 return weather;
+            },
+            
+            /// Function for Forecast to Change Count
+            setCounter: function(param) {
+                count = count + param;
+                console.log("count changed by " + param);
+            },
+            
+            getCounter: function() {
+                return count;
             },
             
             /// Function to Set Weather City

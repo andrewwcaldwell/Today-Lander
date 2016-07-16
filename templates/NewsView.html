@@ -3,22 +3,23 @@
     <!--- Applied Filters for Search and Article Sorting Newest to Oldest -->
     <li class="newsWrapper frameTheme" ng-repeat="article in news | orderBy:'-published' | filter: pancake">
         <figure class="logoBlock">
-            <img class="logo" ng-src="../resource/pub_{{ article.providerId }}.png">
+            <img ng-src="../resource/pub_{{ article.providerId }}.png">
         </figure>
-        <section class="flexColumn article">
-            <h3 class="..."><a href="{{ article.link }}"> {{ article.title }} </a></h3>
-            <!-- Applied Custom Filter from filters.js -->
-
-            <!-- ul for Interests that Match and have been applied as a new property of the Article -->
-
+        <section class="article">
+            <a href="{{ article.link }}"><h3> {{ article.title }} </h3></a>
             <ul class="viewInts">
-                <li class ="int" ng-repeat="int in article.interests track by $index">#{{ int }}
+                <li ng-repeat="int in article.interests track by $index">#{{ int }}
                 </li>
             </ul>   
-            <div class="flexRow">
-                <img class="save" src="../resource/bookmark.png" ng-click="clickSendID( article.id )">
-                <p class="published">Published {{ article.published | fromNow }} ... </p>
+            <div class="bottomBar">
+                <div class="save" ng-click="clickSendID( article.id )">
+                    <p class="bookmarkIcon"></p>
+                </div>
+                <p>Published {{ article.published | fromNow }} ... </p>
             </div>
         </section>
+    </li>
+    <li class="quoteWrapper frameTheme" ng-if="news.length == 0">
+        <h3 class="quoteT">Sorry, it apears your news feed is down right now. Check back later.</h3>
     </li>
 </ul>
