@@ -1,7 +1,8 @@
 var gulp = require('gulp');
-var babel = require('gulp-babel');
 var sass = require('gulp-sass');
 var browserify = require('gulp-browserify');
+var babel = require('gulp-babel');
+var uglify = require('gulp-uglify');
 
 gulp.task('default', ['html', 'temps', 'js', 'css', 'img']);
 
